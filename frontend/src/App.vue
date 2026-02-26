@@ -34,6 +34,7 @@ onMounted(() => {
         <input type="checkbox" v-model="task.done" />
         {{ task.title }}
         <button @click="handleDel(task.id)">del</button>
+         
       </li>
     </ul>
   </div>
