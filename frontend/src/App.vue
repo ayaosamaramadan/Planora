@@ -1,15 +1,28 @@
 <script setup>
-import Counterr from './components/pages/Counterr.vue';
+import { onMounted, ref } from 'vue'
+
+const tasks = ref([])
+const newTask = ref('')
+
+const addTask = () => {
+  if (!newTask.value.trim()) return
+  tasks.value.push({
+    id: Date.now(),
+    title: newTask.value,
+  })
+  newTask.value = ''
+}
+
+onMounted(() => {
+  console.log('tasks', tasks.value)
+})
 </script>
 
 <template>
-  <div id="app">
-    <Counterr />
-  </div>
+  <input v-model="newTask" />
+  <button @click="addTask">Add</button>
 </template>
 
 <style scoped>
-#app {
-  color: #0091ca;
-}
+
 </style>
