@@ -1,16 +1,17 @@
 <script setup>
 import { onMounted, ref } from 'vue'
+import EnterTask from './components/EnterTask.vue'
 
 const tasks = ref([])
-const newTask = ref('')
+// const newTask = ref('')
 
-const addTask = () => {
-  if (!newTask.value.trim()) return
+const addTask = (newTask) => {
+  if (!newTask.trim()) return
   tasks.value.push({
     id: Date.now(),
-    title: newTask.value,
+    title: newTask,
   })
-  newTask.value = ''
+
 }
 
 const handleDel = (id) => {
@@ -24,10 +25,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <input v-model="newTask" />
-    <button @click="addTask">Add</button>
-  </div>
+ <EnterTask @add-task="addTask" />
+ 
 
   <div>
     <ul>
