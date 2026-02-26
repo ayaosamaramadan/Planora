@@ -13,6 +13,11 @@ const addTask = () => {
   newTask.value = ''
 }
 
+const handleDel = (id) => {
+  tasks.value = tasks.value.filter(task => task.id !== id)
+  console.log('tasks', tasks.value)
+}
+
 onMounted(() => {
   console.log('tasks', tasks.value)
 })
@@ -29,6 +34,7 @@ onMounted(() => {
       <li v-for="task in tasks" :key="task.id">
         <input type="checkbox" v-model="task.done" />
         {{ task.title }}
+        <button @click="handleDel(task.id)">del</button>
       </li>
     </ul>
   </div>
