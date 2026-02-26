@@ -2,9 +2,18 @@
 import { onMounted, ref } from 'vue'
 import EnterTask from './components/EnterTask.vue'
 import DeleteTask from './components/DeleteTask.vue'
+import CompB from './components/CompB.vue'
+import CompA from './components/CompA.vue'
+
+const message = ref('')
+
+const handleMessage = (msg) => {
+  message.value = msg
+}
 
 const tasks = ref([])
-// const newTask = ref('')
+
+
 
 const addTask = (newTask) => {
   if (!newTask.trim()) return
@@ -26,18 +35,24 @@ onMounted(() => {
 </script>
 
 <template>
- <EnterTask @add-task="addTask" />
- 
+  <EnterTask @add-task="addTask" />
+
 
   <div>
     <ul>
       <li v-for="task in tasks" :key="task.id">
         <input type="checkbox" v-model="task.done" />
         {{ task.title }}
-       <DeleteTask @delete-task="handleDel(task.id)"/>
+        <DeleteTask @delete-task="handleDel(task.id)" />
       </li>
     </ul>
   </div>
+
+
+
+  <!-- from compA to compB -->
+  <CompA @send-message="handleMessage" />
+  <CompB :msg="message" />
 </template>
 
 <style scoped></style>
