@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import EnterTask from './components/EnterTask.vue'
+import DeleteTask from './components/DeleteTask.vue'
 
 const tasks = ref([])
 // const newTask = ref('')
@@ -33,8 +34,7 @@ onMounted(() => {
       <li v-for="task in tasks" :key="task.id">
         <input type="checkbox" v-model="task.done" />
         {{ task.title }}
-        <button @click="handleDel(task.id)">del</button>
-         
+       <DeleteTask @delete-task="handleDel(task.id)"/>
       </li>
     </ul>
   </div>
