@@ -1,11 +1,19 @@
 <script setup>
+import { ref } from 'vue'
+import { useMessageStore } from '../store/index'
+
+const inputValue = ref('')
+const store = useMessageStore()
+
 const emit = defineEmits(['send-message'])
 
 const sendMessage = () => {
-  emit('send-message', 'Hello from A')
+    store.setMessage(inputValue.value)
+    inputValue.value = ''
 }
 </script>
 
 <template>
-  <button @click="sendMessage">Send</button>
+    <input v-model="inputValue" placeholder="Type message..." />
+    <button @click="sendMessage">Send</button>
 </template>

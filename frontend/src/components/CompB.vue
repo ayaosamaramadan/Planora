@@ -1,9 +1,12 @@
 <script setup>
-const { msg } = defineProps(['msg'])
+
+import { useMessageStore } from '../store/index'
+
+const store = useMessageStore()
 </script>
 
 <template>
-  <h2 class="sty">{{ msg }}</h2>
+  <h2 class="sty">{{ store.message }}</h2>
 </template>
 
 <style scoped>

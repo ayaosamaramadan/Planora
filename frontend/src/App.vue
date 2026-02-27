@@ -51,8 +51,11 @@ onMounted(() => {
 
 
   <!-- from compA to compB -->
-  <CompA @send-message="handleMessage" />
-  <CompB :msg="message" />
+  <CompA/>
+  <!-- @send-message="handleMessage"  -->
+  
+  <CompB/>
+  <!-- :msg="message" -->
 </template>
 
 <style scoped></style>
