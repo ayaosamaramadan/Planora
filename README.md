@@ -1,38 +1,51 @@
-# frontend
+# Planora 📅✅
 
-This template should help get you started developing with Vue 3 in Vite.
+A modern task management application built with **MEVN** stack (MongoDB, Express, Vue.js, Node.js) and **Pinia** for state management. Features calendar integration, real-time updates, and OAuth authentication.
 
-## Recommended IDE Setup
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+<img width="1349" height="681" alt="Planora Calendar" src="https://github.com/user-attachments/assets/6a74323d-f5be-470b-9b04-e204afb7ca13" />
 
-## Recommended Browser Setup
+<img width="1357" height="684" alt="Planora Dashboard" src="https://github.com/user-attachments/assets/0490eb29-72ed-4fc3-b7be-ae82b4ec20f9" />
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Features
 
-## Customize configuration
+- **Task Management**: ✅ Create, organize, and prioritize tasks with ease
+- **Calendar Integration**: 📅 View tasks on an interactive calendar interface
+- **Real-time Updates**: 🔄 Instant synchronization across all devices
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Installation
 
-## Project Setup
+### Frontend
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
+```bash
+cd frontend
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Backend
 
-```sh
-npm run build
+```bash
+cd server
+npm run dev
 ```
+
+## Environment Variables
+
+Create a `.env` file in the server directory:
+
+```bash
+PORT=5000
+SERVER_URL=http://localhost:5000
+CLIENT_URL=http://localhost:5173
+MONGO_URI=your_mongodb_connection_string
+
+# Google OAuth
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+# GitHub OAuth
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+```
+
+**Note**: Replace placeholder values with your actual credentials from Google Cloud Console and GitHub OAuth settings.
