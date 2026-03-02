@@ -1,0 +1,81 @@
+<template>
+  <div>
+    <div >
+      <h2>Create Account</h2>
+
+      <p v-if="error">{{ error }}</p>
+
+      <form @submit.prevent="handleSignUp">
+        <div >
+          <label for="name">Full Name</label>
+          <input id="name" type="text" v-model="name" required autocomplete="name" />
+        </div>
+
+        <div >
+          <label for="email">Email</label>
+          <input id="email" type="email" v-model="email" required autocomplete="email" />
+        </div>
+
+        <div >
+          <label for="password">Password</label>
+          <input id="password" type="password" v-model="password" required minlength="6" autocomplete="new-password" />
+        </div>
+
+        <button type="submit" :disabled="loading">
+          {{ loading ? 'Creating account...' : 'Sign Up' }}
+        </button>
+      </form>
+
+    
+      <div >
+        <button @click="oauthLogin('google')">
+          Sign up with Google
+        </button>
+        <button @click="oauthLogin('github')">
+          Sign up with GitHub
+        </button>
+      </div>
+
+      <p>
+        Already have an account?
+        <router-link to="/login">Login</router-link>
+      </p>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+
+const store = useStore()
+const router = useRouter()
+
+const name = ref('')
+const email = ref('')
+const password = ref('')
+
+const loading = computed(() => store.getters['auth/isLoading'])
+const error = computed(() => store.getters['auth/authError'])
+
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+
+const oauthLogin = (provider) => {
+  window.location.href = `${API}/auth/${provider}`
+}
+
+const handleSignUp = async () => {
+  store.dispatch('auth/clearError')
+  try {
+    await store.dispatch('auth/register', {
+      name: name.value,
+      email: email.value,
+      password: password.value,
+    })
+    router.push({ name: 'Home' })
+  } catch {
+    // error is already set in the store
+  }
+}
+</script>
