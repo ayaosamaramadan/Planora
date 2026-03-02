@@ -16,11 +16,11 @@
       <form @submit.prevent="handleSignUp" class="auth-form">
         <div class="field">
           <label for="name" class="field-label">Full Name</label>
-          <input id="name" type="text" v-model="name" required autocomplete="name" class="field-input" placeholder="Jane Doe" />
+          <input id="name" type="text" v-model="name" required autocomplete="name" class="field-input" placeholder="Name" />
         </div>
         <div class="field">
           <label for="email" class="field-label">Email</label>
-          <input id="email" type="email" v-model="email" required autocomplete="email" class="field-input" placeholder="you@example.com" />
+          <input id="email" type="email" v-model="email" required autocomplete="email" class="field-input" placeholder="Email address" />
         </div>
         <div class="field">
           <label for="password" class="field-label">Password</label>
