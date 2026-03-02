@@ -24,19 +24,10 @@ const handleDel = (id) => {
 
 <template>
   <div class="app-wrapper">
-    <!-- Header -->
-    <header class="app-header">
-      <div class="header-icon">📋</div>
-      <div>
-        <h1 class="app-title">Planora</h1>
-        <p class="app-subtitle">Stay organized, stay ahead</p>
-      </div>
-    </header>
 
-    <!-- Input -->
+   
     <EnterTask @add-task="addTask" />
 
-    <!-- Stats -->
     <div class="stats-bar" v-if="tasks.length > 0">
       <span>{{ tasks.filter(t => t.done).length }} of {{ tasks.length }} completed</span>
       <div class="progress-track">
@@ -47,7 +38,6 @@ const handleDel = (id) => {
       </div>
     </div>
 
-    <!-- Task List -->
     <div class="task-list-wrapper">
       <transition-group name="task" tag="ul" class="task-list">
         <li
@@ -78,6 +68,10 @@ const handleDel = (id) => {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
 

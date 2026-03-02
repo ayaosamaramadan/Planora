@@ -1,16 +1,14 @@
 @import './base.css';
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   min-height: 100vh;
-  padding: 2rem 1rem;
 }
 
 #app {
   width: 100%;
-  max-width: 640px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 
